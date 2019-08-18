@@ -1,19 +1,17 @@
 <template>
   <div>
+    <p>Sign Up</p>
     <nuxt-link :to="{name:'users-sign-in'}">Sign In</nuxt-link>
   </div>
+
 </template>
 
 <script>
     export default {
-        head() {
-            return {
-                title: 'DuDaDu'
-            }
-        }
+        name: "signUp"
     }
 </script>
 
-<style>
+<style scoped>
 
 </style>
