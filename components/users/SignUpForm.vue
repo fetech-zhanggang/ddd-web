@@ -5,14 +5,12 @@
       <a-form-item>
         <a-input v-decorator="decorator.username" size="large" placeholder="Username" ref="usernameInput">
           <a-icon slot="prefix" type="user"/>
-          <a-icon v-if="username" slot="suffix" type="close-circle" @click="emptyUsername"/>
         </a-input>
       </a-form-item>
       <a-form-item>
         <a-input v-decorator="decorator.password" size="large" placeholder="Password" type="password"
                  ref="passwordInput">
           <a-icon slot="prefix" type="lock"/>
-          <a-icon v-if="password" slot="suffix" type="close-circle" @click="emptyPassword"/>
         </a-input>
       </a-form-item>
       <a-form-item>
@@ -39,8 +37,6 @@
         },
         data() {
             return {
-                username: '',
-                password: '',
                 decorator: {
                     username: [
                         'username',
@@ -57,14 +53,6 @@
             this.form = this.$form.createForm(this);
         },
         methods: {
-            emptyUsername() {
-                this.$refs.usernameInput.focus()
-                this.form.username = ''
-            },
-            emptyPassword() {
-                this.$refs.passwordInput.focus()
-                this.form.password = ''
-            },
             handleSubmit(e) {
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
