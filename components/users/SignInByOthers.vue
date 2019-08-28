@@ -25,14 +25,14 @@
 </template>
 
 <script>
-    export default {
-        name: "SignInByOthers"
-    }
+export default {
+  name: "SignInByOthers"
+}
 </script>
 
 <style scoped>
-  .sign-in-button button {
-    margin-bottom: 10px;
-    width: 85%;
-  }
+.sign-in-button button {
+  margin-bottom: 10px;
+  width: 85%;
+}
 </style>
