@@ -1,10 +1,10 @@
 <template>
-  <div id="container">
+  <div class="index-background height-100">
     <a-row class="login-top">
       <a-col class="login-right" :span="14">
         <a-row>
           <a-col align="center" :span="24">
-            <img src="~assets/ddd.png" alt="" />
+            <img src="/ddd.png" alt="" />
           </a-col>
         </a-row>
       </a-col>
@@ -16,7 +16,7 @@
         </a-row>
         <a-row>
           <a-col :span="14">
-            <sign-up-form />
+            <sign-in-form />
           </a-col>
         </a-row>
       </a-col>
@@ -30,11 +30,16 @@
 </template>
 
 <script>
-import SignUpForm from "~/components/users/SignUpForm.vue"
+import SignInForm from "~/components/users/SignInForm.vue"
 
 export default {
+  head() {
+    return {
+      title: "Sign In DuDaDu"
+    }
+  },
   components: {
-    SignUpForm
+    SignInForm
   }
 }
 </script>
@@ -55,13 +60,6 @@ export default {
   position: absolute;
   bottom: 0;
   margin-bottom: 5px;
-}
-
-#container {
-  background-image: url("~assets/index.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
 }
 
 .login-right {
