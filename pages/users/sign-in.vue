@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import SignInForm from "~/components/users/SignInForm.vue"
+import SignInForm from "../../components/users/SignInForm.vue"
 
 export default {
   head() {

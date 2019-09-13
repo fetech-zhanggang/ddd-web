@@ -86,19 +86,21 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault()
-      const self = this
       this.form.validateFields((err, values) => {
         if (!err) {
           this.spinning = true
+          // TODO plugin for $axios to handle error
           this.$axios
-            .post("/rest/user/identities/authentication", values)
-            .then(function(response) {
+            .post("/rest/user/identities", values)
+            .then(response => {
               console.log(response)
-              self.spinning = false
+              this.spinning = false
             })
-            .catch(function(error) {
-              console.log(error)
-              self.spinning = false
+            .catch(() => {
+              this.spinning = false
+              this.$message.error(
+                "Oops! Server was tired out, please try later."
+              )
             })
           console.log("Received values of form: ", values)
         }
