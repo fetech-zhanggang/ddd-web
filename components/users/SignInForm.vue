@@ -1,33 +1,18 @@
 <template>
-  <a-card title="Sign Un">
-    <nuxt-link slot="extra" :to="{ name: 'users-sign-in' }">
-      Or Sign In
+  <a-card class="login-form" title="Sign In">
+    <nuxt-link slot="extra" :to="{ name: 'users-sign-up' }">
+      Or Sign Up
     </nuxt-link>
     <a-spin :spinning="spinning">
-      <a-form
-        class="sign-up-form"
-        layout="horizontal"
-        :form="form"
-        @submit="handleSubmit"
-      >
+      <a-form layout="horizontal" :form="form" @submit="handleSubmit">
         <a-form-item>
           <a-input
             ref="usernameInput"
-            v-decorator="decorator.username"
+            v-decorator="decorator.usernameOrEmail"
             size="large"
-            placeholder="Username"
+            placeholder="Username/Email"
           >
             <a-icon slot="prefix" type="user" />
-          </a-input>
-        </a-form-item>
-        <a-form-item>
-          <a-input
-            ref="emailInput"
-            v-decorator="decorator.email"
-            size="large"
-            placeholder="Email"
-          >
-            <a-icon slot="prefix" type="mail" />
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -41,34 +26,42 @@
             <a-icon slot="prefix" type="lock" />
           </a-input>
         </a-form-item>
-        <a-form-item align="center">
-          <a-divider />
-          <a-button block type="primary" size="large" html-type="submit">
-            Let's Go!
+        <a-form-item>
+          <a-checkbox>Remember me</a-checkbox>
+          <a class="forgot-password">Forgot password</a>
+        </a-form-item>
+        <a-form-item>
+          <a-button
+            type="primary"
+            size="large"
+            html-type="submit"
+            class="login-form-button"
+          >
+            Log in
           </a-button>
         </a-form-item>
       </a-form>
+      <sign-in-by-others />
     </a-spin>
   </a-card>
 </template>
 
 <script>
+import SignInByOthers from "./SignInByOthers.vue"
+
 export default {
-  name: "SignUpForm",
+  name: "SignInForm",
+  components: {
+    SignInByOthers
+  },
   data() {
     return {
       spinning: false,
       decorator: {
-        username: [
-          "username",
+        usernameOrEmail: [
+          "usernameOrEmail",
           {
             rules: [{ required: true, message: "Please input your username!" }]
-          }
-        ],
-        email: [
-          "email",
-          {
-            rules: [{ required: true, message: "Please input your email!" }]
           }
         ],
         password: [
@@ -109,7 +102,17 @@ export default {
 </script>
 
 <style scoped>
-.sign-up-form {
-  padding: 0 50px;
+.login-form {
+  height: 435px;
+  width: 100%;
+  opacity: 1;
+}
+
+.forgot-password {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
 }
 </style>
